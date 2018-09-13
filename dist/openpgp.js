@@ -15069,7 +15069,7 @@ module.exports={
   "_args": [
     [
       "github:openpgpjs/elliptic",
-      "/Users/sunny/Desktop/Protonmail/openpgpjs"
+      "/Users/kaylukas/ProtonTechnologies/repositories/openpgpjs"
     ]
   ],
   "_from": "github:openpgpjs/elliptic",
@@ -15091,7 +15091,7 @@ module.exports={
   ],
   "_resolved": "github:openpgpjs/elliptic#e187e706e11fa51bcd20e46e5119054be4e2a4a6",
   "_spec": "github:openpgpjs/elliptic",
-  "_where": "/Users/sunny/Desktop/Protonmail/openpgpjs",
+  "_where": "/Users/kaylukas/ProtonTechnologies/repositories/openpgpjs",
   "author": {
     "name": "Fedor Indutny",
     "email": "fedor@indutny.com"
@@ -36028,6 +36028,7 @@ exports.default = {
     plaintext: 0,
     /** Not implemented! */
     idea: 1,
+    '3des': 2,
     tripledes: 2,
     cast5: 3,
     blowfish: 4,
@@ -40579,7 +40580,7 @@ function isDataExpired(keyPacket, signature) {
   var normDate = _util2.default.normalizeDate(date);
   if (normDate !== null) {
     var expirationTime = getExpirationTime(keyPacket, signature);
-    return !(keyPacket.created <= normDate && normDate < expirationTime) || signature && signature.isExpired(date);
+    return !(normDate < expirationTime) || signature && signature.isExpired(date);
   }
   return false;
 }
@@ -47188,7 +47189,7 @@ Signature.prototype.isExpired = function () {
   var normDate = _util2.default.normalizeDate(date);
   if (normDate !== null) {
     var expirationTime = this.getExpirationTime();
-    return !(this.created <= normDate && normDate < expirationTime);
+    return !(normDate < expirationTime);
   }
   return false;
 };
